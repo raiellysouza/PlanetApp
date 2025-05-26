@@ -1,8 +1,22 @@
 package com.example.planetapp.ui.screens
 
-@ExperimentalMaterial3Api
-@Composable
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.*
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.example.planetapp.model.Planet
 
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
 fun DetailsScreen(planet: Planet) {
     Scaffold(
         topBar = {
@@ -22,7 +36,6 @@ fun DetailsScreen(planet: Planet) {
                 .padding(paddingValues)
                 .padding(16.dp)
         ) {
-
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -37,57 +50,43 @@ fun DetailsScreen(planet: Planet) {
                         .clip(CircleShape)
                 )
             }
-            Spacer (modifier = Modifier .height(16.dp))
+            Spacer(modifier = Modifier.height(16.dp))
 
             Card(
-                modifier = Modifier .fillMaxWidth(),
+                modifier = Modifier.fillMaxWidth(),
                 shape = RoundedCornerShape(16.dp),
-                colors = CardDefaults .cardColors (containerColor = MaterialTheme .colorScheme .surface )
+                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
             ) {
-                Column (modifier = Modifier .padding(16.dp)) {
+                Column(modifier = Modifier.padding(16.dp)) {
                     Text(
-                        text = "Informações Gerais" ,
-                        style = MaterialTheme .typography .titleMedium .copy( fontWeight = FontWeight .Bold),
-                        color = MaterialTheme .colorScheme .primary
+                        text = "Informações Gerais",
+                        style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
+                        color = MaterialTheme.colorScheme.primary
                     )
-                    Spacer (modifier = Modifier .height(8.dp))
-                    Text(
-                        text = "Tipo: ${planet .type}",
-                        style = MaterialTheme .typography .bodyLarge
-                    )
-                    Text(
-                        text = "Galáxia: ${planet .galaxy }",
-                        style = MaterialTheme .typography .bodyLarge
-                    )
-                    Text(
-                        text = "Distância do Sol: ${planet .distanceFromSun }",
-                        style = MaterialTheme .typography .bodyLarge
-                    )
-                    Text(
-                        text = "Diâmetro: ${planet .diameter }",
-                        style = MaterialTheme .typography .bodyLarge
-                    )
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Text(text = "Tipo: ${planet.type}", style = MaterialTheme.typography.bodyLarge)
+                    Text(text = "Galáxia: ${planet.galaxy}", style = MaterialTheme.typography.bodyLarge)
+                    Text(text = "Distância do Sol: ${planet.distanceFromSun}", style = MaterialTheme.typography.bodyLarge)
+                    Text(text = "Diâmetro: ${planet.diameter}", style = MaterialTheme.typography.bodyLarge)
                 }
             }
-            Spacer(modifier = Modifier .height(16.dp))
-// Características
+            Spacer(modifier = Modifier.height(16.dp))
+
             Card(
-                modifier = Modifier .fillMaxWidth(),
+                modifier = Modifier.fillMaxWidth(),
                 shape = RoundedCornerShape(16.dp),
-                colors = CardDefaults .cardColors (containerColor = MaterialTheme .colorScheme .surfaceVariant )
+                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant)
             ) {
-                Column(modifier = Modifier .padding(16.dp)) {
+                Column(modifier = Modifier.padding(16.dp)) {
                     Text(
-                        text = "Características" ,
-
-                        style = MaterialTheme .typography .titleMedium .copy(fontWeight = FontWeight .Bold),
-
-                        color = MaterialTheme .colorScheme .primary
+                        text = "Características",
+                        style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
+                        color = MaterialTheme.colorScheme.primary
                     )
-                    Spacer(modifier = Modifier .height(8.dp))
+                    Spacer(modifier = Modifier.height(8.dp))
                     Text(
-                        text = planet.characteristics ,
-                        style = MaterialTheme .typography .bodyMedium ,
+                        text = planet.characteristics,
+                        style = MaterialTheme.typography.bodyMedium,
                         lineHeight = 20.sp
                     )
                 }

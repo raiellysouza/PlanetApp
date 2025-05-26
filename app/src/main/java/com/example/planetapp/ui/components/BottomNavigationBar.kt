@@ -3,12 +3,11 @@ package com.example.planetapp.ui.components
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavController
+import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.compose.currentBackStackEntryAsState
-import com.example.planetapp.ui.navigation.BottomBarScreen
-import navigation.BottomBarScreen
+import com.example.planetapp.navigation.BottomBarScreen
 
 @Composable
-
 fun BottomNavigationBar(navController: NavController) {
     val screens = listOf(
         BottomBarScreen.Home,
@@ -26,7 +25,7 @@ fun BottomNavigationBar(navController: NavController) {
                         restoreState = true
                     }
                 },
-                icon = { Icon(imageVector = screen.icon, contentDescription = screen.label) },
+                icon = { screen.icon() },  // Aqui usamos o composable do ícone
                 label = { Text(screen.label) },
                 colors = NavigationBarItemDefaults.colors(
                     selectedIconColor = MaterialTheme.colorScheme.primary,

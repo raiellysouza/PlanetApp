@@ -1,8 +1,22 @@
 package com.example.planetapp.ui.components
 
-@ExperimentalMaterial3Api
-@Composable
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.MoreVert
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.dp
+import com.example.planetapp.R
 
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
 fun TopAppBarWithMenu(
     onSettingsClick: () -> Unit,
     onHelpClick: () -> Unit
@@ -10,7 +24,7 @@ fun TopAppBarWithMenu(
     var expanded by remember { mutableStateOf(false) }
     TopAppBar(
         title = {
-            Row(verticalAlignment = Alignment.Top) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
                 Image(
                     painter = painterResource(id = R.drawable.icon),
                     contentDescription = "App Logo",
@@ -27,38 +41,36 @@ fun TopAppBarWithMenu(
             }
         },
         actions = {
-            IconButton (onClick = { expanded = true }) {
+            IconButton(onClick = { expanded = true }) {
                 Icon(
-                    imageVector = Icons .Default .MoreVert,
+                    imageVector = Icons.Default.MoreVert,
                     contentDescription = "Menu"
                 )
             }
-            DropdownMenu (
-                expanded = expanded ,
+            DropdownMenu(
+                expanded = expanded,
                 onDismissRequest = { expanded = false }
             ) {
-                DropdownMenuItem (
-                    text = { Text("Configurações" ) },
+                DropdownMenuItem(
+                    text = { Text("Configurações") },
                     onClick = {
                         expanded = false
-                        onSettingsClick ()
-
+                        onSettingsClick()
                     }
                 )
-                DropdownMenuItem (
-                    text = { Text("Ajuda" ) },
+                DropdownMenuItem(
+                    text = { Text("Ajuda") },
                     onClick = {
                         expanded = false
-                        onHelpClick ()
-
+                        onHelpClick()
                     }
                 )
             }
         },
-        colors = TopAppBarDefaults .topAppBarColors (
-            containerColor = MaterialTheme .colorScheme .primary ,
-            titleContentColor = MaterialTheme .colorScheme .onPrimary ,
-            actionIconContentColor = MaterialTheme .colorScheme .onPrimary
+        colors = TopAppBarDefaults.topAppBarColors(
+            containerColor = MaterialTheme.colorScheme.primary,
+            titleContentColor = MaterialTheme.colorScheme.onPrimary,
+            actionIconContentColor = MaterialTheme.colorScheme.onPrimary
         )
     )
 }
