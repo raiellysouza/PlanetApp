@@ -9,7 +9,8 @@ data class Planet(
     val distanceFromSun: String,
     val diameter: String,
     val characteristics: String,
-    val imageRes: Int
+    val imageRes: Int,
+    var isFavorite: Boolean = false
 )
 
 val planetList = listOf(

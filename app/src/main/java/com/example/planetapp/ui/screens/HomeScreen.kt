@@ -71,7 +71,8 @@ fun HomeScreen(
                         },
                         onFavoriteToggle = { favoritePlanet ->
                             favoritePlanet.isFavorite = !favoritePlanet.isFavorite
-                        }
+                        },
+                        onClick = TODO()
                     )
                 }
             }

@@ -31,6 +31,7 @@ fun FavoritesScreen(
             )
         }
     ) { innerPadding ->
+        
         val favoritePlanets = planetList.filter { it.isFavorite }
 
         if (favoritePlanets.isEmpty()) {
@@ -58,7 +59,8 @@ fun FavoritesScreen(
                     PlanetListItem(
                         planet = planet,
                         onPlanetSelected = onPlanetSelected,
-                        onFavoriteToggle = onFavoriteToggle
+                        onFavoriteToggle = onFavoriteToggle,
+                        onClick = TODO()
                     )
                 }
             }
